@@ -11,7 +11,7 @@ jobs:
     - name: Build Jekyll Files
       run: |
         docker run \
-        -v $./srv/jekyll -v ./_site:/srv/jekyll/_site \
+        -v $:/srv/jekyll -v ./_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future --trace"
 
     - name: Configure AWS Credentials
