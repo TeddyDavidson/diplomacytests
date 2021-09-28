@@ -10,7 +10,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: eu-east-1 # Change this to the location of your S3 Bucket
+        aws-region: us-east-1 # Change this to the location of your S3 Bucket
 
     # Change ./_site/ to the location of your website in your repository,
     # with Jekyll _site/ is the default location of the built files
