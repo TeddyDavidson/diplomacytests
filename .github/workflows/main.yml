@@ -17,8 +17,8 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: $new{{secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: $new{{secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: $new{{secrets.AWS_ACCESS_KEY_ID}}
+        aws-secret-access-key: $new{{secrets.AWS_SECRET_ACCESS_KEY}}
         aws-region: us-east-1 # Change this to the location of your S3 Bucket
 
     # Change ./_site/ to the location of your website in your repository,
