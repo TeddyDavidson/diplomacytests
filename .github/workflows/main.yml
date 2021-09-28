@@ -11,21 +11,21 @@ jobs:
     - name: Build Jekyll Files
       run: |
         docker run \
-        -v $:/srv/jekyll -v ./_site:/srv/jekyll/_site \
+        -v $new:/srv/jekyll -v ./_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future --trace"
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: $new{{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: $new{{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1 # Change this to the location of your S3 Bucket
 
     # Change ./_site/ to the location of your website in your repository,
     # with Jekyll _site/ is the default location of the built files
     - name: Deploy to S3 bucket
-      run: aws s3 sync ./_site/ ${{ secrets.S3_BUCKET }} --delete
+      run: aws s3 sync ./_site/ $new{{ secrets.S3_BUCKET }} --delete
 
     # Remove this step if you're not using CloudFront
     - name: Invalidate CloudFront Objects
-      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --path "/*"
+      run: aws cloudfront create-invalidation --distribution-id $new{{ secrets.CLOUDFRONT_DIST_ID }} --path "/*"
