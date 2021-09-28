@@ -24,7 +24,7 @@ jobs:
     # Change ./_site/ to the location of your website in your repository,
     # with Jekyll _site/ is the default location of the built files
     - name: Deploy to S3 bucket
-      run: aws s3 sync $new/_site:/srv/jekyll/_site http://diplomacytests.com.s3-website-us-east-1.amazonaws.com/ --delete
+      run: aws s3 sync   run: aws s3 sync ./_site/.github ${{ secrets.S3_BUCKET }} --delete --delete
 
     # Remove this step if you're not using CloudFront
     - name: Invalidate CloudFront Objects
